@@ -33,6 +33,30 @@ async (req, res) => {
 
 };
 
+// GET ALL CONTACT MESSAGES
+const getMessage =
+async (req, res) => {
+
+  try {
+
+    const messages =
+      await Contact.find();
+
+    res.status(200).json(messages);
+
+  }
+
+  catch (error) {
+
+    res.status(500).json({
+      message: error.message
+    });
+
+  }
+
+};
+
 module.exports = {
-  saveMessage
+  saveMessage,
+  getMessage
 };

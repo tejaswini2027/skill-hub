@@ -13,6 +13,9 @@ function Contact() {
       message: ""
     });
 
+  const [messages, setMessages] =
+    useState([]);
+
   async function handleSubmit(e) {
 
     e.preventDefault();
@@ -53,6 +56,31 @@ function Contact() {
 
       toast.error(
         "Failed To Send Message"
+      );
+
+    }
+
+  }
+
+  async function handleGetMessages() {
+
+    try {
+
+      const response =
+        await API.get(
+          "/contact"
+        );
+
+      setMessages(
+        response.data
+      );
+
+    }
+
+    catch (error) {
+
+      toast.error(
+        "Failed To Load Messages"
       );
 
     }
@@ -112,9 +140,33 @@ function Contact() {
         <button type="submit">
           Send Message
         </button>
-
+        <br /><br />
+        <button
+          type="button"
+          onClick={handleGetMessages}
+        >
+          Received Messages
+        </button>
       </form>
 
+      <br />
+
+      {messages.length > 0 && (
+        <div className="received-messages">
+          <h2>Received Messages</h2>
+          <div className="messages-grid">
+            {messages.map((msg) => (
+              <div className="message-card" key={msg._id}>
+                <div className="message-header">
+                  <span className="message-name">{msg.name}</span>
+                  <span className="message-email">{msg.email}</span>
+                </div>
+                <p className="message-body">{msg.message}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
 
   );

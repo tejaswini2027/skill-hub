@@ -323,7 +323,8 @@ textarea {
   border-radius: 8px;
 }
 
-button[type="submit"] {
+button[type="submit"],
+button[type="button"] {
   padding: 12px 20px;
 
   border: none;
@@ -337,8 +338,56 @@ button[type="submit"] {
   cursor: pointer;
 }
 
-button[type="submit"]:hover {
+button[type="submit"]:hover,
+button[type="button"]:hover {
   background: #0056b3;
+}
+
+.received-messages {
+  margin-top: 24px;
+}
+
+.received-messages h2 {
+  margin-bottom: 18px;
+  font-size: 1.25rem;
+  color: #0f2a6d;
+}
+
+.messages-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.message-card {
+  padding: 20px;
+  border-radius: 14px;
+  background: #f5f7ff;
+  border: 1px solid #d9e2ff;
+  box-shadow: 0 8px 24px rgba(15, 42, 109, 0.08);
+}
+
+.message-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.message-name {
+  font-weight: 700;
+  color: #1f3a8a;
+}
+
+.message-email {
+  font-size: 0.95rem;
+  color: #4b5563;
+}
+
+.message-body {
+  line-height: 1.7;
+  color: #334155;
+  white-space: pre-wrap;
 }
 
 /* ===========================

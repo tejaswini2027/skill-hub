@@ -12,9 +12,23 @@ require(
   "../controllers/contactController"
 );
 
+const {
+  getMessage
+}
+=
+require(
+  "../controllers/contactController"
+);
+
 router.post(
   "/",
   saveMessage
 );
+
+router.get(
+  "/",
+  getMessage
+);
+
 
 module.exports = router;
